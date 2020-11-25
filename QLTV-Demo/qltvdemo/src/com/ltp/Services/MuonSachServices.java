@@ -5,7 +5,10 @@
  */
 package com.ltp.Services;
 
+import com.ltp.pojo.DocGia;
+import com.ltp.pojo.MuonSach;
 import com.ltp.pojo.Sach;
+import static java.lang.Integer.parseInt;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,23 +20,23 @@ import java.util.List;
  *
  * @author dell
  */
-public class SachServices {
-     public static List<Sach> getInfoSach() throws SQLException, NumberFormatException
+public class MuonSachServices {
+    public static List<MuonSach> getInfoMuonSach(String id) throws SQLException, NumberFormatException
     {
-        String sql = "SELECT * FROM sach";
+        String sql = "SELECT * FROM muonsach WHERE IdDocGia=?";
         Connection conn = Utils.getConn();
         PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setInt(1, parseInt(id));
         ResultSet rs = stm.executeQuery();
-        rs.first();//chuyển con trỏ về đầu rs
+        rs.first();
         rs.previous();
-        List<Sach> Sachs = new ArrayList<>();
+        List<MuonSach> muonSachs = new ArrayList<>();
         while(rs.next())
         {
-        Sach d = new Sach(rs.getString("TenSach"),rs.getString("TacGia"),
-                rs.getString("DanhMuc"),rs.getInt("NamXuatBan"));
-        Sachs.add(d);
+            MuonSach d = new MuonSach(rs.getInt("IdDocGia"),rs.getString("TenSach"),rs.getString("NgayMuon"));
+            muonSachs.add(d);
         }
-        return Sachs;
+        
+        return muonSachs;
     }
-     
 }

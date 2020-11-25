@@ -5,10 +5,12 @@
         <group>
             <file>file:/D:/New%20folder/QLTV-Demo/qltvdemo/src/com/ltp/Services/DocGiaServices.java</file>
             <file>file:/D:/New%20folder/QLTV-Demo/qltvdemo/src/com/ltp/pojo/Sach.java</file>
+            <file>file:/D:/New%20folder/QLTV-Demo/qltvdemo/src/com/ltp/pojo/MuonSach.java</file>
             <file>file:/D:/New%20folder/QLTV-Demo/qltvdemo/src/demo1/FXMLDocumentController.java</file>
             <file>file:/D:/New%20folder/QLTV-Demo/qltvdemo/src/com/ltp/Services/SachServices.java</file>
             <file>file:/D:/New%20folder/QLTV-Demo/qltvdemo/src/com/ltp/Services/Utils.java</file>
             <file>file:/D:/New%20folder/QLTV-Demo/qltvdemo/src/demo1/Demo1.java</file>
+            <file>file:/D:/New%20folder/QLTV-Demo/qltvdemo/src/com/ltp/Services/MuonSachServices.java</file>
             <file>file:/D:/New%20folder/QLTV-Demo/qltvdemo/src/com/ltp/pojo/DocGia.java</file>
         </group>
     </open-files>

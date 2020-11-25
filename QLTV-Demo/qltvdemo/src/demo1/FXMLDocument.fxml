@@ -213,7 +213,7 @@
                                     <Insets top="5.0" />
                                  </HBox.margin>
                               </Text>
-                              <TextField fx:id="txtKeyTenSach" prefHeight="26.0" prefWidth="232.0">
+                              <TextField fx:id="txtKeyTenSach" prefHeight="26.0" prefWidth="239.0" promptText="(Tên sách, tác giả, năm XB hoăc danh mục)">
                                  <HBox.margin>
                                     <Insets top="3.0" />
                                  </HBox.margin>
@@ -236,11 +236,11 @@
                <children>
                   <VBox layoutY="-1.0" prefHeight="232.0" prefWidth="298.0">
                      <children>
-                        <TableView prefHeight="234.0" prefWidth="298.0">
+                        <TableView fx:id="tbMuon" prefHeight="234.0" prefWidth="298.0">
                           <columns>
-                            <TableColumn prefWidth="60.80004960298538" text="IdĐộc giả" />
-                            <TableColumn prefWidth="149.59997177124023" text="Tên sách" />
-                              <TableColumn prefWidth="87.20002746582031" text="Số ngày mượn" />
+                            <TableColumn fx:id="tcIdMuon" prefWidth="60.80004960298538" text="IdĐộc giả" />
+                            <TableColumn fx:id="tcSachMuon" prefWidth="149.59997177124023" text="Tên sách" />
+                              <TableColumn fx:id="tcNgayMuon" prefWidth="87.20002746582031" text="Ngày mượn" />
                           </columns>
                         </TableView>
                      </children>

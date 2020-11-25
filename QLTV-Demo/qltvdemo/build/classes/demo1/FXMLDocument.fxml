@@ -199,13 +199,13 @@
       </SplitPane>
       <SplitPane dividerPositions="0.3476084538375973" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" GridPane.columnIndex="1">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="139.0" prefWidth="298.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="148.0" prefWidth="298.0">
                <children>
-                  <VBox layoutY="-5.0" prefHeight="122.0" prefWidth="298.0">
+                  <VBox layoutY="-5.0" prefHeight="132.0" prefWidth="298.0">
                      <children>
                         <HBox prefHeight="27.0" prefWidth="298.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tên sách:">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tìm kiếm:">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -213,77 +213,21 @@
                                     <Insets top="5.0" />
                                  </HBox.margin>
                               </Text>
-                              <TextField fx:id="txtKeyTenSach" prefHeight="26.0" prefWidth="190.0">
+                              <TextField fx:id="txtKeyTenSach" prefHeight="26.0" prefWidth="239.0" promptText="(Tên sách, tác giả, năm XB hoăc danh mục)">
                                  <HBox.margin>
                                     <Insets top="3.0" />
                                  </HBox.margin>
                               </TextField>
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="51.0" text="Tìm" />
                            </children>
                         </HBox>
-                        <HBox prefHeight="11.0" prefWidth="298.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tên tác giả:">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField fx:id="txtTenTacGia" prefHeight="26.0" prefWidth="180.0">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </TextField>
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="51.0" text="Tìm" />
-                           </children>
-                           <padding>
-                              <Insets top="3.0" />
-                           </padding>
-                        </HBox>
-                        <HBox prefHeight="10.0" prefWidth="298.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Danh mục:">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField fx:id="txtTenDanhMuc" prefHeight="26.0" prefWidth="186.0">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </TextField>
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="51.0" text="Tìm" />
-                           </children>
-                           <padding>
-                              <Insets top="3.0" />
-                           </padding>
-                        </HBox>
-                        <HBox prefHeight="16.0" prefWidth="298.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Năm xuất bản:">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField fx:id="txtNamXuatBan" prefHeight="26.0" prefWidth="157.0">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </TextField>
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="51.0" text="Tìm" />
-                           </children>
-                           <padding>
-                              <Insets top="3.0" />
-                           </padding>
-                        </HBox>
+                        <TableView fx:id="tbSach" prefHeight="106.0" prefWidth="298.0">
+                          <columns>
+                            <TableColumn fx:id="tcTenSach" prefWidth="86.39996033906937" text="Tên sách" />
+                              <TableColumn fx:id="tcTenTacGia" prefWidth="75.0" text="Tác Giả" />
+                              <TableColumn fx:id="tcNam" prefWidth="68.79998779296875" text="Năm" />
+                              <TableColumn fx:id="tcDanhMuc" prefWidth="67.20000305175779" text="Danh Mục" />
+                          </columns>
+                        </TableView>
                      </children>
                   </VBox>
                </children>
@@ -292,19 +236,11 @@
                <children>
                   <VBox layoutY="-1.0" prefHeight="232.0" prefWidth="298.0">
                      <children>
-                        <TableView fx:id="tbSach" prefHeight="93.0" prefWidth="298.0">
+                        <TableView fx:id="tbMuon" prefHeight="234.0" prefWidth="298.0">
                           <columns>
-                            <TableColumn fx:id="tcTenSach" prefWidth="86.39996033906937" text="Tên sách" />
-                              <TableColumn fx:id="tcTenTacGia" prefWidth="75.0" text="Tác Giả" />
-                              <TableColumn fx:id="tcNam" prefWidth="68.79998779296875" text="Năm" />
-                              <TableColumn fx:id="tcDanhMuc" prefWidth="67.20000305175779" text="Danh Mục" />
-                          </columns>
-                        </TableView>
-                        <TableView prefHeight="140.0" prefWidth="298.0">
-                          <columns>
-                            <TableColumn prefWidth="60.80004960298538" text="IdĐộc giả" />
-                            <TableColumn prefWidth="149.59997177124023" text="Tên sách" />
-                              <TableColumn prefWidth="87.20002746582031" text="Số ngày mượn" />
+                            <TableColumn fx:id="tcIdMuon" prefWidth="60.80004960298538" text="IdĐộc giả" />
+                            <TableColumn fx:id="tcSachMuon" prefWidth="149.59997177124023" text="Tên sách" />
+                              <TableColumn fx:id="tcNgayMuon" prefWidth="87.20002746582031" text="Ngày mượn" />
                           </columns>
                         </TableView>
                      </children>
@@ -323,11 +259,6 @@
                <HBox.margin>
                   <Insets left="5.0" top="5.0" />
                </HBox.margin></Button>
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="106.0" text="Thêm vào table">
-               <HBox.margin>
-                  <Insets left="5.0" top="5.0" />
-               </HBox.margin>
-            </Button>
          </children>
       </HBox>
       <HBox prefHeight="23.0" prefWidth="300.0" GridPane.rowIndex="1">

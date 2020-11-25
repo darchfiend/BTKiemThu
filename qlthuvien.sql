@@ -58,8 +58,8 @@ DROP TABLE IF EXISTS `muonsach`;
 CREATE TABLE `muonsach` (
   `IdDocGia` int NOT NULL,
   `TenSach` varchar(100) NOT NULL,
-  `SoNgayMuon` int NOT NULL,
-  PRIMARY KEY (`IdDocGia`)
+  `NgayMuon` varchar(30) NOT NULL,
+  PRIMARY KEY (`IdDocGia`,`TenSach`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -69,6 +69,7 @@ CREATE TABLE `muonsach` (
 
 LOCK TABLES `muonsach` WRITE;
 /*!40000 ALTER TABLE `muonsach` DISABLE KEYS */;
+INSERT INTO `muonsach` VALUES (1,'Lão Hạc','11/25/2020'),(1,'Thơ Thơ','11/25/2020');
 /*!40000 ALTER TABLE `muonsach` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,4 +137,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-23 23:55:55
+-- Dump completed on 2020-11-25 22:45:00

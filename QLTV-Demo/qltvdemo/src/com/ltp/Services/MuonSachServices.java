@@ -5,9 +5,7 @@
  */
 package com.ltp.Services;
 
-import com.ltp.pojo.DocGia;
 import com.ltp.pojo.MuonSach;
-import com.ltp.pojo.Sach;
 import static java.lang.Integer.parseInt;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -38,5 +36,26 @@ public class MuonSachServices {
         }
         
         return muonSachs;
+    }
+    public static void addMuon(MuonSach m) throws SQLException, NumberFormatException
+    {
+        Connection conn = Utils.getConn();
+        String sql = "INSERT INTO muonsach(IdDocGia, TenSach, NgayMuon) VALUES"
+                + " (?,?,?)";
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setInt(1, m.getIdMuon());
+        stm.setString(2, m.getTenSachMuon());
+        stm.setString(3, m.getNgayMuon());
+        stm.executeUpdate();
+        stm.close();
+    }
+    public static void xoaMuon(int id) throws SQLException
+    {
+        Connection conn = Utils.getConn();
+        String sql = "DELETE FROM muonsach WHERE IdDocGia=?";
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setInt(1,id );
+        stm.executeUpdate();
+        stm.close();
     }
 }

@@ -251,11 +251,11 @@
       </SplitPane>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <Button mnemonicParsing="false" text="Mượn sách">
+            <Button mnemonicParsing="false" onAction="#muonSachHandler" text="Mượn sách">
                <HBox.margin>
                   <Insets left="5.0" top="5.0" />
                </HBox.margin></Button>
-            <Button mnemonicParsing="false" text="Trả sách">
+            <Button mnemonicParsing="false" onAction="#traSachHandler" text="Trả sách">
                <HBox.margin>
                   <Insets left="5.0" top="5.0" />
                </HBox.margin></Button>

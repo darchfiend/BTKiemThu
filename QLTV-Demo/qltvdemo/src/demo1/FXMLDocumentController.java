@@ -6,6 +6,7 @@
 package demo1;
 
 import com.ltp.Services.DocGiaServices;
+import com.ltp.Services.MuonSachServices;
 import static com.ltp.Services.MuonSachServices.getInfoMuonSach;
 import static com.ltp.Services.SachServices.getInfoSach;
 import com.ltp.pojo.DocGia;
@@ -14,7 +15,12 @@ import com.ltp.pojo.Sach;
 import static java.lang.Integer.parseInt;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -26,11 +32,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Le Tran Phu
  */
+
 public class FXMLDocumentController implements Initializable {
     
 
@@ -56,6 +64,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML private TableColumn tcSachMuon;
     @FXML private TableColumn tcNgayMuon;
     
+    
     @FXML
     private void handleButtonAction(ActionEvent event) throws SQLException, NumberFormatException {
         try{
@@ -68,6 +77,7 @@ public class FXMLDocumentController implements Initializable {
             System.out.println(ex.getMessage());
         }
     }
+    
     @FXML
     private void RefreshHandler(ActionEvent event)
     {
@@ -98,6 +108,7 @@ public class FXMLDocumentController implements Initializable {
         txtEMAIL.setText(d.getEmail());
         txtSDT.setText(Integer.toString(d.getSdt()));
         txtDIACHI.setText(d.getDiaChi());
+        //
         tcIdMuon.setCellValueFactory(new PropertyValueFactory<>("idMuon"));
         tcSachMuon.setCellValueFactory(new PropertyValueFactory<>("tenSachMuon"));
         tcNgayMuon.setCellValueFactory(new PropertyValueFactory<>("NgayMuon"));
@@ -147,6 +158,55 @@ public class FXMLDocumentController implements Initializable {
         //Thêm sorted và filtered data vào TableView
         tbSach.setItems(sortedData);
 
+    }
+    @FXML private void muonSachHandler(ActionEvent evt) throws SQLException, ParseException
+    {
+        int sachDaMuon = tbMuon.getItems().size();
+        Date hanThe = new SimpleDateFormat("yyy-MM-dd").parse(txtHT2.getText());
+        String ngayMuon = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+        Date dateMuon = new SimpleDateFormat("yyy-MM-dd").parse(ngayMuon);
+        //dateMuon = ngày hiện tại
+        if(sachDaMuon < 5 && hanThe.compareTo(dateMuon) >= 0){
+        //them vao database
+
+            Sach s = tbSach.getSelectionModel().getSelectedItem();
+            String ts = s.getTenSach();
+
+            MuonSach m = new MuonSach(parseInt(txtId.getText()),ts,ngayMuon);
+            MuonSachServices.addMuon(m);
+            //update table
+            ObservableList<MuonSach> dataListMuon = FXCollections.observableArrayList();
+            dataListMuon.addAll(getInfoMuonSach(txtId.getText()));
+            tbMuon.setItems(dataListMuon);
+        }
+        else
+        {
+            if(sachDaMuon >= 5)
+                JOptionPane.showMessageDialog(null, "Không được mượn nhiều hơn 5 cuốn");
+            if(hanThe.compareTo(dateMuon) < 0)
+                JOptionPane.showMessageDialog(null, "Thẻ thư viện đã hết hạn");
+        }
+    }
+    @FXML private void traSachHandler(ActionEvent evt) throws ParseException, SQLException
+    {
+        ObservableList<MuonSach> dataListMuon = FXCollections.observableArrayList();
+        dataListMuon.addAll(getInfoMuonSach(txtId.getText()));
+        String ngayMuon = dataListMuon.get(0).getNgayMuon();
+        //
+        Date hanThe = new SimpleDateFormat("yyy-MM-dd").parse(txtHT2.getText());
+        Date dateMuon = new SimpleDateFormat("yyy-MM-dd").parse(ngayMuon);
+        long soNgayKhac = dateMuon.getTime() - hanThe.getTime();
+        TimeUnit.DAYS.convert(soNgayKhac, TimeUnit.MILLISECONDS);
+        long phat = soNgayKhac*5000;
+        if(hanThe.compareTo(dateMuon) < 0)
+            JOptionPane.showMessageDialog(null, "Đã trễ "+ soNgayKhac + "ngày Phải trả phạt " +phat+ "Đ");
+        else
+            JOptionPane.showMessageDialog(null, "Trả đúng ngày");
+        MuonSachServices.xoaMuon(parseInt(txtId.getText()));
+        //refresh lai table
+        ObservableList<MuonSach> dataList = FXCollections.observableArrayList();
+        dataList.addAll(getInfoMuonSach(txtId.getText()));
+        tbMuon.setItems(dataList);
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -69,7 +69,6 @@ CREATE TABLE `muonsach` (
 
 LOCK TABLES `muonsach` WRITE;
 /*!40000 ALTER TABLE `muonsach` DISABLE KEYS */;
-INSERT INTO `muonsach` VALUES (1,'Lão Hạc','11/25/2020'),(1,'Thơ Thơ','11/25/2020');
 /*!40000 ALTER TABLE `muonsach` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,7 +90,7 @@ CREATE TABLE `sach` (
   `NgayNhapSach` varchar(20) NOT NULL,
   `ViTriSach` varchar(150) NOT NULL,
   PRIMARY KEY (`MaSach`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +99,7 @@ CREATE TABLE `sach` (
 
 LOCK TABLES `sach` WRITE;
 /*!40000 ALTER TABLE `sach` DISABLE KEYS */;
-INSERT INTO `sach` VALUES (1,'Tôi thấy hoa vàng trên cỏ xanh','Nguyễn Nhật Ánh','...',2009,'TP.HCM','tiểu thuyết','2020-01-01','khu A'),(2,'Lão Hạc','Nam Cao','...',1943,'Việt Nam','truyện ngắn','2020-02-01','khu B'),(3,'Thơ thơ','Xuân Diệu','...',1945,'Việt Nam','Thơ','2013-03-04','khu C');
+INSERT INTO `sach` VALUES (1,'Tôi thấy hoa vàng trên cỏ xanh','Nguyễn Nhật Ánh','...',2009,'TP.HCM','tiểu thuyết','2020-01-01','khu A'),(2,'Lão Hạc','Nam Cao','...',1943,'Việt Nam','truyện ngắn','2020-02-01','khu B'),(3,'Thơ thơ','Xuân Diệu','...',1945,'Việt Nam','Thơ','2013-03-04','khu C'),(4,'Con chim xanh biếc bay về','Nguyễn Nhật Ánh','...',2020,'Việt Nam','tiểu thuyết','2020-03-03','Khu A'),(5,'Nhà giả kim','Paulo Coelho','...',2013,'Brazil','tiểu thuyết','2020-04-11','khu B'),(6,'Suối nguồn','Ayn Rand','...',2018,'Mỹ','tiểu thuyết','2014-12-02','khu C');
 /*!40000 ALTER TABLE `sach` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,7 +123,7 @@ CREATE TABLE `tacgia` (
 
 LOCK TABLES `tacgia` WRITE;
 /*!40000 ALTER TABLE `tacgia` DISABLE KEYS */;
-INSERT INTO `tacgia` VALUES (1,'Nguyễn Nhật Ánh'),(2,'Nam Cao'),(3,'Xuân Diệu');
+INSERT INTO `tacgia` VALUES (1,'Nguyễn Nhật Ánh'),(2,'Nam Cao'),(3,'Xuân Diệu'),(4,'Paulo Coelho'),(5,'Ayn Rand');
 /*!40000 ALTER TABLE `tacgia` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -137,4 +136,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-25 22:45:00
+-- Dump completed on 2020-11-27 22:11:40
